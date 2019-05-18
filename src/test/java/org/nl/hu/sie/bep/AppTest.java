@@ -1,4 +1,4 @@
-package org.nl.hu.sie.bep.business;
+package org.nl.hu.sie.bep;
 
 import static org.junit.Assert.assertTrue;
 
