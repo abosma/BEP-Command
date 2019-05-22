@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="BEP Project" />
-        <module name="business" />
+        <module name="BEP-Command" />
       </profile>
     </annotationProcessing>
   </component>
