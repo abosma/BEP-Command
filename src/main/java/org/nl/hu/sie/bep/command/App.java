@@ -10,9 +10,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        InputHandler inputHandler = new InputHandler();
-
-        inputHandler.createScanner();
-        inputHandler.askForMonth();
+        new InputHandler();
     }
 }
