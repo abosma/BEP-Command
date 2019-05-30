@@ -43,20 +43,20 @@ public class ConvertMonthDataToIEF extends Command {
         }
     }
 
-    private int parseUserInput(String userInput)
+    protected int parseUserInput(String userInput)
     {
         int parsedInteger = 0;
 
         try{
             parsedInteger = Integer.parseInt(userInput);
         }catch (NumberFormatException e){
-            logger.error(e.getLocalizedMessage());
+            logger.error(e.getMessage());
         }
 
         return parsedInteger;
     }
 
-    private boolean monthIsValid(int inputMonth)
+    protected boolean monthIsValid(int inputMonth)
     {
         return inputMonth >= 1 && inputMonth <= 12;
     }
