@@ -1,15 +1,30 @@
 package org.nl.hu.sie.bep.command.input;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputHandlerTest {
 
-    //TODO Learn how to unit test programs with needed user input
+    private InputHandler inputHandler;
+
+    @BeforeEach
+    void InitializeTest(){
+        inputHandler = new InputHandler();
+    }
 
     @Test
-    void InitializeTest(){
-        assertTrue(true);
+    void TestUserInputParsingSuccess(){
+        String SucceededInput = "1";
+
+        assertEquals(inputHandler.parseUserInput(SucceededInput), 1);
+    }
+
+    @Test
+    void TestUserInputParsingFailed(){
+        String FailedInput = "asdf";
+
+        assertEquals(inputHandler.parseUserInput(FailedInput), 0);
     }
 }
