@@ -1,5 +1,6 @@
 package org.nl.hu.sie.bep.command.commands;
 
+import org.nl.hu.sie.bep.command.adapter.CommandAdapter;
 import org.nl.hu.sie.bep.command.generic.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,7 @@ public class ConvertMonthDataToIEF extends Command {
 
                 if(monthIsValid(userInputInteger)){
                     logger.info("Creating files from databases...");
+                    CommandAdapter.createIEFFilesFromMonthNumber(userInputInteger);
                     break;
                 }
             }

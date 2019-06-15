@@ -33,8 +33,8 @@ public class InputHandler {
                 }
 
                 String userOptionsString = "Please choose an option\n" +
-                        "1. Convert Month Data To IEF Files\n" +
-                        "2. Exit Program";
+                        "1 - Convert Month Data To IEF Files\n" +
+                        "Any other number - Exit Program";
 
                 logger.info(userOptionsString);
 
@@ -67,14 +67,18 @@ public class InputHandler {
                 commandHandler.addCommand(convertMonthDataToIEF);
                 commandHandler.processPendingCommands();
                 break;
-            case 2:
-                try {
-                    commandLineReader.close();
-                    closingProgram = true;
-                    break;
-                } catch (IOException e) {
-                    logger.error(e.getLocalizedMessage());
-                }
+            default:
+                closeProgram();
+                break;
+        }
+    }
+
+    private void closeProgram(){
+        try {
+            commandLineReader.close();
+            closingProgram = true;
+        } catch (IOException e) {
+            logger.error(e.getLocalizedMessage());
         }
     }
 }
