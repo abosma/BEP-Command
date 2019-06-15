@@ -16,7 +16,7 @@ public class InputHandler {
     private BufferedReader commandLineReader;
     private CommandHandler commandHandler;
 
-    private boolean closingProgram = false;
+    protected boolean closingProgram = false;
 
     public InputHandler() {
         commandLineReader = new BufferedReader(new InputStreamReader(System.in));
@@ -47,7 +47,7 @@ public class InputHandler {
         }
     }
 
-    private int parseUserInput(String userInput)
+    protected int parseUserInput(String userInput)
     {
         int parsedInteger = 0;
 
@@ -60,7 +60,7 @@ public class InputHandler {
         return parsedInteger;
     }
 
-    private void handleUserInput(int userIntegerInput){
+    protected void handleUserInput(int userIntegerInput){
         switch(userIntegerInput){
             case 1:
                 Command convertMonthDataToIEF = new ConvertMonthDataToIEF();
@@ -73,7 +73,7 @@ public class InputHandler {
         }
     }
 
-    private void closeProgram(){
+    protected void closeProgram(){
         try {
             commandLineReader.close();
             closingProgram = true;

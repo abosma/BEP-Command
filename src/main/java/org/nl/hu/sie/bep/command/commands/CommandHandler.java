@@ -8,7 +8,8 @@ import java.util.List;
 
 public class CommandHandler {
 
-    private List<Command> commands = new ArrayList<>();
+    List<Command> commands = new ArrayList<>();
+
     private BufferedReader commandLineHandler;
 
     public CommandHandler(BufferedReader commandLineHandler){
@@ -19,11 +20,11 @@ public class CommandHandler {
         commands.add(command);
     }
 
-    public void removeCommand(Command command) {
+    void removeCommand(Command command) {
         commands.remove(command);
     }
 
-    public boolean hasPendingCommands() {
+    boolean hasPendingCommands() {
         return commands.stream().anyMatch(Command::isPending);
     }
 
