@@ -4,7 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.easymock.EasyMock.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 class InputHandlerTest {
 
@@ -22,7 +24,9 @@ class InputHandlerTest {
         expect(inputHandler.parseUserInput(SucceededInput)).andReturn(1);
         replay(inputHandler);
 
-        assertEquals(inputHandler.parseUserInput(SucceededInput), 1);
+        assertThat(inputHandler.parseUserInput(SucceededInput), is(equalTo(1)));
+
+        verify(inputHandler);
     }
 
     @Test
@@ -32,6 +36,32 @@ class InputHandlerTest {
         expect(inputHandler.parseUserInput(FailedInput)).andReturn(0);
         replay(inputHandler);
 
-        assertEquals(inputHandler.parseUserInput(FailedInput), 0);
+        assertThat(inputHandler.parseUserInput(FailedInput), is(equalTo(0)));
+
+        verify(inputHandler);
+    }
+
+    @Test
+    void TestCommandInputBooleanReturnTrue(){
+        int InputReturnTrue = 1;
+
+        expect(inputHandler.userSelectsConvertDataToIEF(InputReturnTrue)).andReturn(true);
+        replay(inputHandler);
+
+        assertThat(inputHandler.userSelectsConvertDataToIEF(InputReturnTrue), is(true));
+
+        verify(inputHandler);
+    }
+
+    @Test
+    void TestCommandInputBooleanReturnFalse(){
+        int InputReturnFalse = 0;
+
+        expect(inputHandler.userSelectsConvertDataToIEF(InputReturnFalse)).andReturn(false);
+        replay(inputHandler);
+
+        assertThat(inputHandler.userSelectsConvertDataToIEF(InputReturnFalse), is(false));
+
+        verify(inputHandler);
     }
 }

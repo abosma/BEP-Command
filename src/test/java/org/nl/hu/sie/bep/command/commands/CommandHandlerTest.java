@@ -8,8 +8,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import static org.easymock.EasyMock.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 class CommandHandlerTest {
 
@@ -30,7 +31,7 @@ class CommandHandlerTest {
 
         replay(mockCommand);
 
-        assertEquals(commandHandler.commands.size(), 1);
+        assertThat(commandHandler.commands.size(), is(equalTo(1)));
 
         verify(mockCommand);
     }
@@ -42,11 +43,11 @@ class CommandHandlerTest {
 
         replay(mockCommand);
 
-        assertEquals(commandHandler.commands.size(), 1);
+        assertThat(commandHandler.commands.size(), is(equalTo(1)));
 
         commandHandler.removeCommand(mockCommand);
 
-        assertEquals(commandHandler.commands.size(), 0);
+        assertThat(commandHandler.commands.size(), is(equalTo(0)));
 
         verify(mockCommand);
     }
@@ -61,7 +62,7 @@ class CommandHandlerTest {
 
         replay(mockCommand);
 
-        assertTrue(commandHandler.hasPendingCommands());
+        assertThat(commandHandler.hasPendingCommands(), is(true));
 
         verify(mockCommand);
     }

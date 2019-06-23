@@ -3,7 +3,9 @@ package org.nl.hu.sie.bep.command.commands;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 class ConvertMonthDataToIEFTest {
 
@@ -18,14 +20,14 @@ class ConvertMonthDataToIEFTest {
     void TestUserInputParsingSuccess(){
         String SucceededInput = "1";
 
-        assertEquals(convertMonthDataToIEF.parseUserInput(SucceededInput), 1);
+        assertThat(convertMonthDataToIEF.parseUserInput(SucceededInput), is(equalTo(1)));
     }
 
     @Test
     void TestUserInputParsingFailed(){
         String FailedInput = "asdf";
 
-        assertEquals(convertMonthDataToIEF.parseUserInput(FailedInput), 0);
+        assertThat(convertMonthDataToIEF.parseUserInput(FailedInput), is(equalTo(0)));
     }
 
     @Test
@@ -33,8 +35,8 @@ class ConvertMonthDataToIEFTest {
         int SucceededInputMinimum = 1;
         int SucceededInputMaximum = 12;
 
-        assertTrue(convertMonthDataToIEF.monthIsValid(SucceededInputMinimum));
-        assertTrue(convertMonthDataToIEF.monthIsValid(SucceededInputMaximum));
+        assertThat(convertMonthDataToIEF.monthIsValid(SucceededInputMinimum), is(true));
+        assertThat(convertMonthDataToIEF.monthIsValid(SucceededInputMaximum), is(true));
     }
 
     @Test
@@ -42,17 +44,17 @@ class ConvertMonthDataToIEFTest {
         int FailedInputMinimum = 0;
         int FailedInputMaximum = 13;
 
-        assertFalse(convertMonthDataToIEF.monthIsValid(FailedInputMinimum));
-        assertFalse(convertMonthDataToIEF.monthIsValid(FailedInputMaximum));
+        assertThat(convertMonthDataToIEF.monthIsValid(FailedInputMinimum), is(false));
+        assertThat(convertMonthDataToIEF.monthIsValid(FailedInputMaximum), is(false));
     }
 
     @Test
     void TestCommandIsPending(){
-        assertTrue(convertMonthDataToIEF.isPending());
+        assertThat(convertMonthDataToIEF.isPending(), is(true));
     }
 
     @Test
     void TestOverrideToString(){
-        assertEquals(convertMonthDataToIEF.toString(), "Convert Month Data To IEF");
+        assertThat(convertMonthDataToIEF.toString(), is(equalTo("Convert Month Data To IEF")));
     }
 }

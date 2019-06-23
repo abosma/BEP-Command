@@ -51,9 +51,9 @@ public class InputHandler {
     {
         int parsedInteger = 0;
 
-        try{
+        try {
             parsedInteger = Integer.parseInt(userInput);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             logger.error(e.getLocalizedMessage());
         }
 
@@ -61,16 +61,18 @@ public class InputHandler {
     }
 
     protected void handleUserInput(int userIntegerInput){
-        switch(userIntegerInput){
-            case 1:
-                Command convertMonthDataToIEF = new ConvertMonthDataToIEF();
-                commandHandler.addCommand(convertMonthDataToIEF);
-                commandHandler.processPendingCommands();
-                break;
-            default:
-                closeProgram();
-                break;
+
+        if(userSelectsConvertDataToIEF(userIntegerInput)){
+            Command convertMonthDataToIEF = new ConvertMonthDataToIEF();
+            commandHandler.addCommand(convertMonthDataToIEF);
+            commandHandler.processPendingCommands();
+        } else {
+            closeProgram();
         }
+    }
+
+    protected boolean userSelectsConvertDataToIEF(int userIntegerInput){
+        return userIntegerInput == 1;
     }
 
     protected void closeProgram(){
