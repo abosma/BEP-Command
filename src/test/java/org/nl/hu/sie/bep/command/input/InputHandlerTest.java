@@ -23,6 +23,8 @@ class InputHandlerTest {
         replay(inputHandler);
 
         assertEquals(inputHandler.parseUserInput(SucceededInput), 1);
+
+        verify(inputHandler);
     }
 
     @Test
@@ -33,5 +35,7 @@ class InputHandlerTest {
         replay(inputHandler);
 
         assertEquals(inputHandler.parseUserInput(FailedInput), 0);
+
+        verify(inputHandler);
     }
 }
