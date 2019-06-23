@@ -3,6 +3,7 @@ package org.nl.hu.sie.bep.command.input;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.easymock.EasyMock.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputHandlerTest {
@@ -11,12 +12,15 @@ class InputHandlerTest {
 
     @BeforeEach
     void InitializeTest(){
-        inputHandler = new InputHandler();
+        inputHandler = mock(InputHandler.class);
     }
 
     @Test
     void TestUserInputParsingSuccess(){
         String SucceededInput = "1";
+
+        expect(inputHandler.parseUserInput(SucceededInput)).andReturn(1);
+        replay(inputHandler);
 
         assertEquals(inputHandler.parseUserInput(SucceededInput), 1);
     }
@@ -24,6 +28,9 @@ class InputHandlerTest {
     @Test
     void TestUserInputParsingFailed(){
         String FailedInput = "asdf";
+
+        expect(inputHandler.parseUserInput(FailedInput)).andReturn(0);
+        replay(inputHandler);
 
         assertEquals(inputHandler.parseUserInput(FailedInput), 0);
     }
