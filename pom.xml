@@ -138,15 +138,4 @@
         <version>1.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
-  
-  <distributionManagement>
-		<repository>
-			<id>packagecloud-AtillaBosma</id>
-			<url>packagecloud+https://packagecloud.io/AtillaBosma/backendprogramming</url>
-		</repository>
-		<snapshotRepository>
-			<id>packagecloud-AtillaBosma</id>
-			<url>packagecloud+https://packagecloud.io/AtillaBosma/backendprogramming</url>
-		</snapshotRepository>
-	</distributionManagement>
 </project>
