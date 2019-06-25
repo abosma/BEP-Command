@@ -10,24 +10,20 @@
   <packaging>jar</packaging>
 
   <name>command</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
       <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-compiler-plugin</artifactId>
 			<configuration>
-				<source>11</source>
-				<target>11</target>
+				<source>1.11</source>
+				<target>1.11</target>
 			</configuration>
 		</plugin>
 		<plugin>
@@ -40,7 +36,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
+          <version>2.22.2</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -54,7 +50,6 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.7.1</version>
@@ -65,7 +60,17 @@
         </plugin>
       </plugins>
     </pluginManagement>
-	<extensions>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>11</source>
+                  <target>11</target>
+              </configuration>
+          </plugin>
+      </plugins>
+      <extensions>
 		<extension>
 			<groupId>io.packagecloud.maven.wagon</groupId>
 			<artifactId>maven-packagecloud-wagon</artifactId>
@@ -73,19 +78,65 @@
 		</extension>
 	</extensions>
   </build>
+
+    <repositories>
+        <repository>
+            <id>martinj98-Bep-domain</id>
+            <url>https://packagecloud.io/martinj98/Bep-domain/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
   
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.4.2</version>
+        <scope>test</scope>
     </dependency>
-	<dependency>
-		<groupId>org.mongodb</groupId>
-		<artifactId>mongodb-driver</artifactId>
-		<version>3.10.1</version>
-	</dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.4.2</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongodb-driver</artifactId>
+        <version>3.10.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.26</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.7.26</version>
+    </dependency>
+    <dependency>
+        <groupId>org.easymock</groupId>
+        <artifactId>easymock</artifactId>
+        <version>4.0.2</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-all</artifactId>
+        <version>1.3</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.nl.hu.sie.bep.domain</groupId>
+        <artifactId>domain</artifactId>
+        <version>1.6-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   
   <distributionManagement>

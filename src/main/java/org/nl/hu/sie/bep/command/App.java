@@ -1,13 +1,11 @@
 package org.nl.hu.sie.bep.command;
 
-/**
- * Hello world!
- *
- */
-public class App
+import org.nl.hu.sie.bep.command.input.InputHandler;
+
+public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println("Hello World!");
+        new InputHandler();
     }
 }
