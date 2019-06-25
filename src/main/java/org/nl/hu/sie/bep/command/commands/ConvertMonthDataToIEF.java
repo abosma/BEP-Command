@@ -33,7 +33,10 @@ public class ConvertMonthDataToIEF extends Command {
                 int userInputInteger = parseUserInput(commandLineReader.readLine());
 
                 if(monthIsValid(userInputInteger)){
-                    logger.info("Creating files from databases...");
+                    String userLogInfo = String.format("Month %s was chosen. Converting data to IEF file format...", userInputInteger);
+
+                    logger.info(userLogInfo);
+
                     CommandAdapter.createIEFFilesFromMonthNumber(userInputInteger);
                     break;
                 }
