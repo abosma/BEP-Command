@@ -37,7 +37,9 @@ public class ConvertMonthDataToIEF extends Command {
 
                     logger.info(userLogInfo);
 
-                    CommandAdapter.createIEFFilesFromMonthNumber(userInputInteger);
+                    CommandAdapter commandAdapter = new CommandAdapter();
+
+                    commandAdapter.createIEFFilesFromMonthNumber(userInputInteger);
                     break;
                 }
             }
