@@ -7,13 +7,13 @@ import org.slf4j.LoggerFactory;
 public class CommandAdapter implements Adapter {
 
     private static Logger logger = LoggerFactory.getLogger(CommandAdapter.class);
-    private static CommandAdapterImpl commandAdapterImpl = new CommandAdapterImpl();
+    private CommandAdapterImpl commandAdapterImpl = new CommandAdapterImpl();
 
-    private CommandAdapter(){
+    public CommandAdapter(){
 
     }
 
-    public static void createIEFFilesFromMonthNumber(int monthNumber) {
+    public void createIEFFilesFromMonthNumber(int monthNumber) {
         try {
             commandAdapterImpl.createIEFFilesFromMonthNumber(monthNumber);
         } catch (NullPointerException e) {
